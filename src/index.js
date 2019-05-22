@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import { EMPTY_LUNCHBOX, ADD_CHIPS, ADD_DRINK, ADD_SANDWICH, ADD_SNACKS, REMOVE_CHIPS, REMOVE_DRINK, REMOVE_SANDWICH, REMOVE_SNACKS, addChips, addDrink, addSandwich, addSnacks, removeChips, removeDrink, removeSandwich, removeSnacks } from './actions/lunchActions';
 
 const initialState = {
   drink: '',
@@ -9,23 +10,23 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch(action.type) {
-    case 'ADD_DRINK':
+    case ADD_DRINK:
       return { ...state, drink: action.payload };
-    case 'ADD_CHIPS':
+    case ADD_CHIPS:
       return { ...state, chips: action.payload };
-    case 'ADD_SANDWICH':
+    case ADD_SANDWICH:
       return { ...state, sandwich: action.payload };
-    case 'REMOVE_DRINK':
+    case REMOVE_DRINK:
       return { ...state, drink: '' };
-    case 'REMOVE_CHIPS':
+    case REMOVE_CHIPS:
       return { ...state, chips: '' };
-    case 'REMOVE_SANDWICH':
+    case REMOVE_SANDWICH:
       return { ...state, sandwich: '' };
-    case 'EMPTY_LUNCHBOX':
+    case EMPTY_LUNCHBOX:
       return { drink: null, chips: null, sandwich: null };
-    case 'ADD_SNACKS':
+    case ADD_SNACKS:
       return { ...state, snacks: [...state.snacks, action.payload] };
-    case 'REMOVE_SNACKS':
+    case REMOVE_SNACKS:
       return { ...state, snacks: state.snacks.filter((snack) => snack !== action.payload) };
     default:
       return state;
@@ -34,54 +35,29 @@ function reducer(state = initialState, action) {
 
 const store = createStore(reducer);
 
-store.dispatch({
-  type: 'ADD_SNACKS',
-  payload: 'apple'
-});
+store.dispatch(addSnacks('apple'));
 console.log(store.getState());
 
-store.dispatch({
-  type: 'ADD_DRINK',
-  payload: 'tea'
-});
+store.dispatch(addDrink('tea'));
 console.log(store.getState());
 
-store.dispatch({
-  type: 'ADD_CHIPS',
-  payload: 'pretzels'
-});
+store.dispatch(addChips('pretzels'));
 console.log(store.getState());
 
-store.dispatch({
-  type: 'ADD_SANDWICH',
-  payload: 'bologna'
-});
+store.dispatch(addSandwich('bologna'));
 console.log(store.getState());
 
-store.dispatch({
-  type: 'REMOVE_SANDWICH'
-});
+store.dispatch(removeSandwich());
 console.log(store.getState());
 
-store.dispatch({
-  type: 'REMOVE_DRINK'
-});
+store.dispatch(removeDrink());
 console.log(store.getState());
 
-store.dispatch({
-  type: 'REMOVE_CHIPS'
-});
+store.dispatch(removeChips());
 console.log(store.getState());
 
-store.dispatch({
-  type: 'ADD_SNACKS',
-  payload: 'pear'
-});
-
+store.dispatch(addSnacks('pear'));
 console.log(store.getState());
 
-store.dispatch({
-  type: 'REMOVE_SNACKS',
-  payload: 'pear'
-});
+store.dispatch(removeSnacks('pear'));
 console.log(store.getState());
