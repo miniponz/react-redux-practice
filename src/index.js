@@ -1,33 +1,18 @@
 import { createStore } from 'redux';
-import { EMPTY_LUNCHBOX, ADD_CHIPS, ADD_DRINK, ADD_SANDWICH, ADD_SNACKS, REMOVE_CHIPS, REMOVE_DRINK, REMOVE_SANDWICH, REMOVE_SNACKS, addChips, addDrink, addSandwich, addSnacks, removeChips, removeDrink, removeSandwich, removeSnacks } from './actions/lunchActions';
+import { CREATE_POST, DELETE_POST, DELETE_ALL_POSTS, addPost, deletePost, deleteAllPosts } from './actions/blogActions';
 
 const initialState = {
-  drink: '',
-  chips: '',
-  sandwich: '',
-  snacks: []
+  posts: []
 };
 
 function reducer(state = initialState, action) {
   switch(action.type) {
-    case ADD_DRINK:
-      return { ...state, drink: action.payload };
-    case ADD_CHIPS:
-      return { ...state, chips: action.payload };
-    case ADD_SANDWICH:
-      return { ...state, sandwich: action.payload };
-    case REMOVE_DRINK:
-      return { ...state, drink: '' };
-    case REMOVE_CHIPS:
-      return { ...state, chips: '' };
-    case REMOVE_SANDWICH:
-      return { ...state, sandwich: '' };
-    case EMPTY_LUNCHBOX:
-      return { drink: null, chips: null, sandwich: null };
-    case ADD_SNACKS:
-      return { ...state, snacks: [...state.snacks, action.payload] };
-    case REMOVE_SNACKS:
-      return { ...state, snacks: state.snacks.filter((snack) => snack !== action.payload) };
+    case CREATE_POST:
+      return { ...state, posts: [...state.posts, action.payload] };
+    case DELETE_ALL_POSTS:
+      return { posts: [] };
+    case DELETE_POST:
+      return { ...state, posts: state.posts.filter((post) => post.title !== action.payload) };
     default:
       return state;
   }
@@ -35,29 +20,16 @@ function reducer(state = initialState, action) {
 
 const store = createStore(reducer);
 
-store.dispatch(addSnacks('apple'));
+store.dispatch(addPost({ title: 'my title', body: 'here is a blog post' }));
 console.log(store.getState());
 
-store.dispatch(addDrink('tea'));
+store.dispatch(addPost({ title: 'i like tea', body: 'let me tell you all about i like tea' }));
 console.log(store.getState());
 
-store.dispatch(addChips('pretzels'));
+store.dispatch(deletePost('my title'));
 console.log(store.getState());
 
-store.dispatch(addSandwich('bologna'));
+store.dispatch(deleteAllPosts());
 console.log(store.getState());
 
-store.dispatch(removeSandwich());
-console.log(store.getState());
 
-store.dispatch(removeDrink());
-console.log(store.getState());
-
-store.dispatch(removeChips());
-console.log(store.getState());
-
-store.dispatch(addSnacks('pear'));
-console.log(store.getState());
-
-store.dispatch(removeSnacks('pear'));
-console.log(store.getState());
