@@ -18,3 +18,6 @@ console.log(store.getState());
 
 store.dispatch(deleteComment('post', 0));
 console.log(store.getState());
+
+
+//reduce(accumulator, stuff)
