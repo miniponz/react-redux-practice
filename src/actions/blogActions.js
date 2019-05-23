@@ -16,7 +16,7 @@ export const deleteAllPosts = () => ({
 });
 
 export const UPDATE_POST_BY_TITLE = 'UPDATE_POST_BY_TITLE';
-export const updatePost = title => ({
+export const updatePost = (title, body) => ({
   type: UPDATE_POST_BY_TITLE,
-  payload: title
+  payload: { title, body }
 });
