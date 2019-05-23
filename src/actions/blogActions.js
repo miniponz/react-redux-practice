@@ -14,3 +14,9 @@ export const DELETE_ALL_POSTS = 'DELETE_ALL_POSTS';
 export const deleteAllPosts = () => ({
   type: DELETE_ALL_POSTS
 });
+
+export const UPDATE_POST_BY_TITLE = 'UPDATE_POST_BY_TITLE';
+export const updatePost = title => ({
+  type: UPDATE_POST_BY_TITLE,
+  payload: title
+});
