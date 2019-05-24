@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Post from './Post';
 
 function Posts({ posts }) {
-  const postList = posts.map((post, i) => {
+  const postList = posts.map((post) => {
     return (
-      <li key={i}>
-        <Post title={post.title} />
+      <li key={post.id}>
+        <Post title={post.title}/>
       </li>
     );
   });
