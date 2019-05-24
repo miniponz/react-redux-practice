@@ -1,13 +1,13 @@
 export const CREATE_POST = 'CREATE_POST';
-export const addPost = (post) => ({
+export const addPost = (title, body) => ({
   type: CREATE_POST,
-  payload: post
+  payload: { title, body }
 });
 
 export const DELETE_POST = 'DELETE_POST';
-export const deletePost = title => ({
+export const deletePost = id => ({
   type: DELETE_POST,
-  payload: title
+  payload: id
 });
 
 export const DELETE_ALL_POSTS = 'DELETE_ALL_POSTS';
@@ -15,8 +15,8 @@ export const deleteAllPosts = () => ({
   type: DELETE_ALL_POSTS
 });
 
-export const UPDATE_POST_BY_TITLE = 'UPDATE_POST_BY_TITLE';
-export const updatePost = (title, body) => ({
-  type: UPDATE_POST_BY_TITLE,
-  payload: { title, body }
+export const UPDATE_POST_BY_ID = 'UPDATE_POST_BY_ID';
+export const updatePost = (id, body) => ({
+  type: UPDATE_POST_BY_ID,
+  payload: { id, body }
 });
