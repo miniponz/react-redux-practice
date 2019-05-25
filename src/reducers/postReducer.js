@@ -2,14 +2,14 @@ import { CREATE_POST, DELETE_POST, DELETE_ALL_POSTS } from '../actions/blogActio
 import { UPDATE_POST_BY_ID } from '../actions/blogActions';
 import uuid from 'uuid/v4';
 
-const initialState = [];
+const initialState = {};
 
 export default function reducer(state = initialState, action) {
   const id = uuid();
   switch(action.type) {
     case CREATE_POST: {
       const { title, body } = action.payload;
-      return [...state, { id, title, body }];
+      return { ...state, [id]: { id, title, body } };
     }
     case DELETE_ALL_POSTS:
       return state = [];
