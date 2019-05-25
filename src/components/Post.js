@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Post({ title }) {
+function Post({ post, deletePost }) {
   return (
     <div>
-      <h3>{title}</h3>
+      <h3>{post.title}</h3>
+      <p>{post.body}</p>
+      <button onClick={deletePost.bind(null, post.id)}>delete this post?</button>
     </div>
   );
 }
 
 Post.propTypes = {
-  title: PropTypes.string.isRequired
+  post: PropTypes.object.isRequired,
+  deletePost: PropTypes.func.isRequired
 };
 
 export default Post;
