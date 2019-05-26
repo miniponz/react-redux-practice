@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { addComment } from '../actions/commentActions';
 import CommentForm from '../components/CommentForm';
 
-const matchDispatchToProps = (dispatch, props) => ({
+const mapDispatchToProps = (dispatch, props) => ({
   onSubmit(comment) {
     dispatch(addComment(props.postId, comment));
   }
@@ -10,5 +10,5 @@ const matchDispatchToProps = (dispatch, props) => ({
 
 export default connect(
   null, 
-  matchDispatchToProps
+  mapDispatchToProps
 )(CommentForm);
