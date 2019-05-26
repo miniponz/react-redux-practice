@@ -12,8 +12,9 @@ export default function reducer(state = initialState, action) {
       return { ...state, [id]: { id, title, body } };
     }
     case DELETE_ALL_POSTS:
-      return state = [];
-    case DELETE_POST:
+      return state = {};
+      //needs update for obj. notation from here down.
+    case DELETE_POST: 
       return state.filter((post) => post.id !== action.payload);
     case UPDATE_POST_BY_ID:
       return { ...state, posts: state.posts.map((post) => {
