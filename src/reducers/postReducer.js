@@ -5,9 +5,9 @@ import uuid from 'uuid/v4';
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-  const id = uuid();
   switch(action.type) {
     case CREATE_POST: {
+      const id = uuid();
       const { title, body } = action.payload;
       return { ...state, [id]: { id, title, body } };
     }
@@ -15,7 +15,10 @@ export default function reducer(state = initialState, action) {
       return state = {};
       //needs update for obj. notation from here down.
     case DELETE_POST: 
-      return state.filter((post) => post.id !== action.payload);
+      // eslint-disable-next-line no-case-declarations
+      const newState = { ...state };
+      delete newState[action.payload];
+      return newState;
     case UPDATE_POST_BY_ID:
       return { ...state, posts: state.posts.map((post) => {
         if(post.id === action.payload.id) {

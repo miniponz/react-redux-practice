@@ -12,7 +12,7 @@ function Posts({ posts, deletePost }) {
   });
 
   return (
-    <ul>{postList}</ul>
+    <ul style={{ listStyle: 'none' }}>{postList}</ul>
   );
 }
 
