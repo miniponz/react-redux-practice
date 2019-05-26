@@ -1,9 +1,7 @@
 import { CREATE_COMMENT, DELETE_COMMENT } from '../actions/commentActions';
 import uuid from 'uuid/v4';
 
-const initialState = {
-  comments: {}
-};
+const initialState = {};
 
 
 export default function reducer(state = initialState, action) {

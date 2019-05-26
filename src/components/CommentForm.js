@@ -19,7 +19,7 @@ export default class CommentForm extends PureComponent {
     event.preventDeafult();
     const { comment } = this.state;
     this.props.onSubmit(comment);
-    this.setState({ comment: 'make a comment?' });
+    this.setState({ comment: '' });
   }
 
   render() {
@@ -28,7 +28,7 @@ export default class CommentForm extends PureComponent {
       <>
       <h3>Make a Comment!</h3>
       <form onSubmit={this.handleSubmit}>
-        <input type="textarea" name="comment" value={comment} onChange={this.handleChange}/>
+        <textarea name="comment" value={comment} onChange={this.handleChange}/>
         <button>...submit comment...</button>
       </form>
       </>
