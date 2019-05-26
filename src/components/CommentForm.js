@@ -7,7 +7,6 @@ export default class CommentForm extends PureComponent {
  }
 
   state = {
-    postId: '',
     comment: '',
   };
 
@@ -15,13 +14,12 @@ export default class CommentForm extends PureComponent {
     this.setState({ [target.name]: target.value });
   }
 
-  //slice params at 12.
+  //slice params at 12?
   handleSubmit = event => {
     event.preventDeafult();
     const { comment } = this.state;
-    const postId = window.location.pathname.slice(12);
-    this.props.onSubmit(postId, comment);
-    this.setState({ postId: '', comment: 'make a comment?' });
+    this.props.onSubmit(comment);
+    this.setState({ comment: 'make a comment?' });
   }
 
   render() {

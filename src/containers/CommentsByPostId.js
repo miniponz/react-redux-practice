@@ -8,5 +8,12 @@ const mapStateToProps = (state, { postId }) => ({
 });
 
 const mapDispatchToProps = (dispatch, { postId }) => ({
-  deleteComment()
-})
+  deleteComment(commentId) {
+    dispatch(deleteComment(postId, commentId));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Comments);
