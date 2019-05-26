@@ -1,7 +1,7 @@
 export const CREATE_COMMENT = 'CREATE_COMMENT';
-export const addComment = (postId, comment) => ({
+export const addComment = (postId, comment, id) => ({
   type: CREATE_COMMENT,
-  payload: { postId, comment }
+  payload: { postId, comment, id }
 });
 
 export const DELETE_COMMENT = 'DELETE_COMMENT';
