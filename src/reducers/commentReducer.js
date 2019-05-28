@@ -6,18 +6,20 @@ const initialState = {};
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
-    case CREATE_COMMENT:
-      // eslint-disable-next-line no-case-declarations
+    case CREATE_COMMENT: {
       const id = uuid();
+      const { postId, comment } = action.payload;
+      const comments = state[postId] || [];
       return {
         ...state,
-        [action.payload.postId]: [
-          ...(state[action.payload.postId] || []),
-          action.payload.comment, id
-        ]
+        [postId]: [...comments, { comment, id }]
       };
-    case DELETE_COMMENT:
-      return { ...state, comments: state.comments.filter(comment => comment.postTitle !== action.payload.postTitle || state.comments.indexOf(comment) !== action.payload.commentIndex) };
+    }
+    case DELETE_COMMENT:{ 
+      const newState = { ...state };
+      delete newState.action.payload.postId[action.payload.commentId];
+      return newState;
+    }
     default:
       return state;
   }
