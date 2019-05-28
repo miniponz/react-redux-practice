@@ -15,7 +15,7 @@ export default function reducer(state = initialState, action) {
         [postId]: [...comments, { comment, id }]
       };
     }
-    case DELETE_COMMENT:{ 
+    case DELETE_COMMENT: { 
       const newState = { ...state };
       delete newState.action.payload.postId[action.payload.commentId];
       return newState;
