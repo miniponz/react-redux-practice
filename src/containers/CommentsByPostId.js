@@ -7,9 +7,9 @@ const mapStateToProps = (state, { postId }) => ({
   comments: getComments(state, postId)
 });
 
-const mapDispatchToProps = (dispatch, { postId }) => ({
+const mapDispatchToProps = (dispatch, props) => ({
   deleteComment(commentId) {
-    dispatch(deleteComment(postId, commentId));
+    dispatch(deleteComment(props.postId, commentId));
   }
 });
 

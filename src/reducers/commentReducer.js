@@ -16,9 +16,11 @@ export default function reducer(state = initialState, action) {
       };
     }
     case DELETE_COMMENT: { 
-      const newState = { ...state };
-      delete newState.action.payload.postId[action.payload.commentId];
-      return newState;
+      const { postId, commentId } = action.payload;
+      return { ...state, 
+        [postId]: state[postId].filter(comment => comment.id !== commentId) || []
+        
+      };
     }
     default:
       return state;
