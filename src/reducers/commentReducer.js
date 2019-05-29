@@ -19,7 +19,6 @@ export default function reducer(state = initialState, action) {
       const { postId, commentId } = action.payload;
       return { ...state, 
         [postId]: state[postId].filter(comment => comment.id !== commentId) || []
-        
       };
     }
     default:
