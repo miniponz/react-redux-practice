@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Display Component displays stuff! 1`] = `
+<div>
+  <p>
+    text
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    ...delete comment?
+  </button>
+</div>
+`;
